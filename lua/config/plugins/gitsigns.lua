@@ -1,6 +1,4 @@
-gitsigns = require('gitsigns')
-
-gitsigns.setup {
+require('gitsigns').setup {
     signs = {
         add          = {hl = 'GitSignsAdd'   , text = '|', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
         change       = {hl = 'GitSignsChange', text = '|', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},

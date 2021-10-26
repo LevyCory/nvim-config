@@ -19,6 +19,12 @@ lib.map.nnoremap('<Down>', ':resize +1<CR>')
 lib.map.nnoremap('<Left>',  ':vertical resize +1<CR>')
 lib.map.nnoremap('<Right>', ':vertical resize -1<CR>')
 
+lib.map.nnoremap('<a-k>', ':resize -1<CR>')
+lib.map.nnoremap('<a-j>', ':resize +1<CR>')
+lib.map.nnoremap('<a-h>',  ':vertical resize +1<CR>')
+lib.map.nnoremap('<a-l>', ':vertical resize -1<CR>')
+
+
 -- Insert mode movements
 lib.map.inoremap('<c-j>', '<c-o>j')
 lib.map.inoremap('<c-k>', '<c-o>k')
@@ -45,7 +51,12 @@ lib.map.tnoremap('<c-l>', '<c-\\><c-n><c-w>l')
 
 -- Edit config
 local config_dir = vim.fn.stdpath('config')
-
-local config_in_new_tab_cmd = ':tabnew %s <cr>'
-lib.map.nnoremap('<leader>ev', config_in_new_tab_cmd:format(config_dir))
+local config_cmd = ':tabnew %s <cr>'
+lib.map.nnoremap('<leader>ev', config_cmd:format(config_dir))
 lib.map.nnoremap('<leader>sv', ':source $MYVIMRC<cr>')
+
+-- Search
+lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')
+
+-- clang.d
+lib.map.nnoremap('<c-t>', ':ClangdSwitchSourceHeader<cr>')

@@ -12,7 +12,7 @@ nvim_tree.setup {
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
   auto_close          = true,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
-  open_on_tab         = true,
+  open_on_tab         = false,
   -- hijacks new directory buffers when they are opened.
   update_to_buf_dir   = {
     -- enable the feature
@@ -23,11 +23,16 @@ nvim_tree.setup {
 
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor       = true,
+
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
-  update_cwd          = false,
+  update_cwd          = true,
+
+  -- Will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+  respect_buf_cwd           = true,
+
   -- show lsp diagnostics in the signcolumn
   diagnostics = {
-    enable = false,
+    enable = true,
     icons = {
       hint = "",
       info = "",
@@ -43,19 +48,11 @@ nvim_tree.setup {
 
     -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
     -- only relevant when `update_focused_file.enable` is true
-    update_cwd  = true,
+    update_cwd  = false,
 
     -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
     -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
     ignore_list = {}
-  },
-
-  -- configuration options for the system open command (`s` in the tree by default)
-  system_open = {
-    -- the command to run this, leaving nil should work in most cases
-    cmd  = nil,
-    -- the command arguments as a list
-    args = {}
   },
 
   view = {
@@ -67,6 +64,77 @@ nvim_tree.setup {
     side = 'left',
     -- if true the tree will resize itself after opening a file
     auto_resize = true
+  },
+
+  git = {
+      enable = true,
+      ignore = true
+  },
+
+  renderer = {
+    add_trailing = false,
+    group_empty = false,
+    highlight_git = true,
+    full_name = false,
+    highlight_opened_files = "name",
+    root_folder_modifier = ":~",
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        item = "│ ",
+        none = "  ",
+      },
+    },
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+    special_files = {
+      "Cargo.toml",
+      "Makefile",
+      "README.md",
+      "readme.md",
+      "CMakeLists.txt"
+    },
+  },
+
+  actions = {
+    open_file = {
+        quit_on_open = true
+    }
   }
 }
 

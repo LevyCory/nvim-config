@@ -13,9 +13,8 @@ vim.opt.smartcase = true
 -- Auto read modified files
 vim.opt.autoread = true
 
--- TODO: Visual autocomplete
--- opt.wildmenu = true
-
+-- Visual autocomplete
+vim.opt.wildmenu = true
 
 -- Make tabs be 4 spaces wide
 vim.opt.tabstop = 4
@@ -33,7 +32,9 @@ vim.opt.lazyredraw = true
 vim.opt.wildignore = {
     '*.swp',
     '*.o',
-    '*.pyc'
+    '*.pyc',
+    '*.a',
+    '*.o'
 }
 
 -- Make backspace behave like you'd expect
@@ -44,24 +45,24 @@ vim.opt.shell = 'D:/Programs/git/bin/bash.exe'
 
 -- Python
 -- Abbreviate pdb to 'import pdb; pdb.set_trace()'
-vim.api.nvim_exec([[
+vim.cmd([[
     augroup init-lua-python
         au FileType python :iabbrev pdb import pdb; pdb.set_trace()
     augroup END
 ]], false)
 
 -- make/cmake
-vim.api.nvim_exec([[
+vim.cmd([[
     augroup init-lua-make-cmake
       autocmd!
       autocmd FileType make setlocal noexpandtab
       autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
     augroup END
-]], false)
+]])
 
 -- C++
-vim.api.nvim_exec([[
+vim.cmd([[
     augroup init-lua-cpp
       autocmd BufNewFile,BufRead *.ixx setlocal filetype=cpp
     augroup END
-]], false)
+]])

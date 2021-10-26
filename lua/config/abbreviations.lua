@@ -1,5 +1,5 @@
 -- no one is really happy until you have this shortcuts
-vim.api.nvim_exec([[
+vim.cmd([[
     cnoreabbrev W! w!
     cnoreabbrev Q! q!
     cnoreabbrev Qall! qall!
@@ -10,4 +10,4 @@ vim.api.nvim_exec([[
     cnoreabbrev W w
     cnoreabbrev Q q
     cnoreabbrev Qall qall
-]], false)
+]])

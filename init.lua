@@ -15,12 +15,16 @@ vim.g.mapleader = ','
 lib = require('lib.all')
 
 -- Set up plugins
-require 'config.plugins.config'
+require 'config.plugins.packer'
 require 'config.plugins.nvim-tree'
 require 'config.plugins.lualine'
 require 'config.plugins.gitsigns'
+require 'config.plugins.colorizer'
 require 'config.plugins.snap'
+require 'config.plugins.lsp'
+require 'config.plugins.treesitter'
 
+-- Set up settings
 require 'config.remaps'
 require 'config.abbreviations'
 require 'config.ui'
