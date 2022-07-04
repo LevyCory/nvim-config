@@ -12,7 +12,10 @@ return {
             enabled = false
         },
         jedi_language_server = {
-            enabled = false
+            enabled = true,
+            cmd = {
+                'jedi-language-server'
+            }
         }
     }
 }
