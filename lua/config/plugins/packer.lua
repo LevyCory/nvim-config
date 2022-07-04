@@ -18,7 +18,12 @@ return require('packer').startup(function()
     use 'tpope/vim-commentary'
 
     -- Fuzzy Finder
-    use 'camspiers/snap'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/plenary.nvim' }
+        }
+    }
 
 	-- Status Line
 	use {
@@ -26,8 +31,24 @@ return require('packer').startup(function()
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
 
+    -- Snippets
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+
     -- LSP
     use 'neovim/nvim-lspconfig'
+
+    -- Autocomplete
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline'
+        }
+    }
 
     -- TreeSitter
     use {

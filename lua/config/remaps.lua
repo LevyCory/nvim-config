@@ -58,5 +58,13 @@ lib.map.nnoremap('<leader>sv', ':source $MYVIMRC<cr>')
 -- Search
 lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')
 
--- clang.d
-lib.map.nnoremap('<c-t>', ':ClangdSwitchSourceHeader<cr>')
+-- LSP server maps
+lib.map.lsp_register_defaults = function()
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0})
+    vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { buffer = 0})
+    vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { buffer = 0})
+    vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, { buffer = 0})
+    vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { buffer = 0})
+    vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { buffer = 0})
+    vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = 0})
+end
