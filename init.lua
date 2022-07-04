@@ -16,14 +16,14 @@ require 'config.preload'
 
 -- Set up plugins
 require 'config.plugins.packer'
+require 'config.plugins.nvim-cmp'
+require 'config.plugins.lsp'
 require 'config.plugins.nvim-tree'
-require 'config.plugins.lualine'
 require 'config.plugins.gitsigns'
 require 'config.plugins.colorizer'
 require 'config.plugins.telescope'
 require 'config.plugins.treesitter'
-require 'config.plugins.nvim-cmp'
-require 'config.plugins.lsp'
+require 'config.plugins.lualine'
 
 -- Set up settings
 require 'config.remaps'

@@ -21,7 +21,7 @@ if lib.platform.language_servers.sumneko_lua.enabled then
                     version = 'LuaJIT'
                 },
                 diagnostics = {
-                    globals = {'vim', 'use'}
+                    globals = {'vim', 'use', 'next', 'ipairs'}
                 },
                 workspace = {
                     library = vim.api.nvim_get_runtime_file('', true)
@@ -41,3 +41,24 @@ if lib.platform.language_servers.jedi_language_server.enabled then
         on_attach = lib.map.lsp_register_defaults
     }
 end
+
+lib.lsp = {
+    current_server = function()
+        local msg = ''
+        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local clients = vim.lsp.get_active_clients()
+
+        if next(clients) == nil then
+          return msg
+        end
+
+        for _, client in ipairs(clients) do
+          local filetypes = client.config.filetypes
+          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            return client.name
+          end
+        end
+
+        return msg
+    end
+}

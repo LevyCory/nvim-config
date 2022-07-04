@@ -1,6 +1,6 @@
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    packer_bootstrap = vim.fn.system(
+    G_packer_bootstrap = vim.fn.system(
         {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
     )
 end
@@ -96,7 +96,7 @@ return lib.packer.startup(function()
     use 'EdenEast/nightfox.nvim'
     use 'navarasu/onedark.nvim'
 
-    if packer_bootstrap then
+    if G_packer_bootstrap then
       lib.packer.sync()
     end
 end)

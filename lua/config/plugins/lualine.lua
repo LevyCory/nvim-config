@@ -1,8 +1,15 @@
-local lualine = require('lualine')
+local get_active_lsp = function()
+    local lsp = lib.lsp.current_server();
+    if lsp == '' then
+        return 'No Active LSP'
+    end
 
-lualine.setup {
+    return lsp
+end
+
+require('lualine').setup {
   options = {
-    theme = auto,
+    theme = 'auto',
     component_separators = '|',
     section_separators = { left = '', right = '' },
   },
@@ -10,10 +17,10 @@ lualine.setup {
     lualine_a = {
       { 'mode', separator = { left = '' }, right_padding = 2 },
     },
-    lualine_b = { 'filename', 'branch' },
+    lualine_b = { 'filename', 'branch'},
     lualine_c = { 'fileformat' },
     lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
+    lualine_y = {{get_active_lsp, icon=' LSP:'}, 'filetype', 'progress' },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
     },
