@@ -3,19 +3,19 @@ return {
         sumneko_lua = {
             enabled = true,
             cmd = {
-                'C:\\langsrv\\lua-language-server\\bin\\lua-language-server',
+                '/usr/local/bin/lua-language-server/bin/lua-language-server',
                 '-E',
-                'C:\\langsrv\\lua-language-server\\bin\\main.lua',
+                '/usr/local/bin/lua-language-server/bin/main.lua'
             }
         },
         clangd = {
-            enabled = false
+            enabled = true
         },
         jedi_language_server = {
             enabled = true,
             cmd = {
-                'jedi-language-server'
-            }
+                '~/.local/bin/jedi-language-server'
+            },
         }
     }
 }

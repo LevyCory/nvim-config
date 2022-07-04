@@ -1,6 +1,4 @@
-local nvim_tree = require('nvim-tree')
-
-nvim_tree.setup {
+require('nvim-tree').setup {
   -- disables netrw completely
   disable_netrw       = true,
   -- hijack netrw window on startup

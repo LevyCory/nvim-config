@@ -36,7 +36,7 @@ end
 
 if lib.platform.language_servers.jedi_language_server.enabled then
     lspconfig.jedi_language_server.setup {
-        cmd = {'~/.local/bin/jedi-language-server'},
+        cmd = lib.platform.language_servers.jedi_language_server.cmd,
         capabilities = lib.cmp.capabilities,
         on_attach = lib.map.lsp_register_defaults
     }
