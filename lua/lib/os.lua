@@ -14,4 +14,13 @@ function M.is_unix()
     return M.separator == '/'
 end
 
+function M.get_platform_settings()
+    if M.is_windows() then
+        return require('platform.windows')
+    end
+    if M.is_unix() then
+        return require('platform.unix')
+    end
+end
+
 return M
