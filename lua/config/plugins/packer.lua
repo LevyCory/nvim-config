@@ -5,7 +5,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     )
 end
 
-return require('packer').startup(function()
+lib.packer = require('packer')
+return lib.packer.startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -92,8 +93,10 @@ return require('packer').startup(function()
     use 'w0ng/vim-hybrid'
     use 'hzchirs/vim-material'
     use 'shaunsingh/nord.nvim'
+    use 'EdenEast/nightfox.nvim'
+    use 'navarasu/onedark.nvim'
 
     if packer_bootstrap then
-      require('packer').sync()
+      lib.packer.sync()
     end
 end)

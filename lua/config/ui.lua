@@ -1,11 +1,8 @@
 -- Set Colorscheme
-vim.cmd('colorscheme hybrid')
+vim.cmd('colorscheme onedark')
 
 -- Set Font
 lib.ui.set_font('Consolas NF:h14')
-
--- For Neovide:
--- vim.opt.guifont = {"Consolas NF", "h14"}
 
 -- Highlight line under cursor
 vim.opt.cursorline = true
@@ -21,6 +18,3 @@ vim.opt.splitright = true
 
 -- Disable mouse
 vim.opt.mouse = ''
-
--- Support terminal colors
-vim.opt.termguicolors = true

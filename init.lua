@@ -11,7 +11,6 @@
 -- Set leader
 vim.g.mapleader = ','
 
-
 -- Call preload config
 require 'config.preload'
 
