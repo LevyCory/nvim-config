@@ -14,13 +14,13 @@ lib.map.nnoremap('<c-h>', '<c-w>h')
 lib.map.nnoremap('<c-l>', '<c-w>l')
 
 -- Put those arrow keys to good use
-lib.map.nnoremap('<Up>', ':resize -1<CR>')
-lib.map.nnoremap('<Down>', ':resize +1<CR>')
-lib.map.nnoremap('<Left>',  ':vertical resize +1<CR>')
-lib.map.nnoremap('<Right>', ':vertical resize -1<CR>')
+-- lib.map.nnoremap('<Up>', ':resize -1<CR>')
+-- lib.map.nnoremap('<Down>', ':resize +1<CR>')
+-- lib.map.nnoremap('<Left>',  ':vertical resize +1<CR>')
+-- lib.map.nnoremap('<Right>', ':vertical resize -1<CR>')
 
-lib.map.nnoremap('<a-k>', ':resize -1<CR>')
-lib.map.nnoremap('<a-j>', ':resize +1<CR>')
+lib.map.nnoremap('<a-k>', ':resize +1<CR>')
+lib.map.nnoremap('<a-j>', ':resize -1<CR>')
 lib.map.nnoremap('<a-h>',  ':vertical resize +1<CR>')
 lib.map.nnoremap('<a-l>', ':vertical resize -1<CR>')
 
@@ -53,7 +53,6 @@ lib.map.tnoremap('<c-l>', '<c-\\><c-n><c-w>l')
 local config_dir = vim.fn.stdpath('config')
 local config_cmd = ':tabnew %s <cr>'
 lib.map.nnoremap('<leader>ev', config_cmd:format(config_dir))
-lib.map.nnoremap('<leader>sv', ':source $MYVIMRC<cr>')
 
 -- Search
 lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')
