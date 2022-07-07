@@ -1,4 +1,5 @@
 return {
+    shell = 'D:/Programs/git/bin/bash.exe',
     language_servers = {
         sumneko_lua = {
             enabled = true,
