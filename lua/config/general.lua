@@ -41,9 +41,7 @@ vim.opt.wildignore = {
 vim.opt.backspace = {'indent', 'eol', 'start'}
 
 -- Set shell
-if lib.os.is_windows() then
-    vim.opt.shell = 'D:/Programs/git/bin/bash.exe'
-end
+vim.opt.shell = lib.os.opt.shell
 
 -- Python
 -- Abbreviate pdb to 'import pdb; pdb.set_trace()'

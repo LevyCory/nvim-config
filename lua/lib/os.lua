@@ -6,21 +6,21 @@ function M.join_path(...)
     return table.concat(arg, M.separator)
 end
 
-function M.is_windows() 
+function M.is_windows()
     return M.separator == '\\'
 end
 
-function M.is_unix() 
+function M.is_unix()
     return M.separator == '/'
 end
 
-function M.get_platform_settings()
-    if M.is_windows() then
-        return require('platform.windows')
-    end
-    if M.is_unix() then
-        return require('platform.unix')
-    end
+-- Load platform specific settings
+if M.is_windows then
+    M.opt = require('platform.windows')
+end
+
+if M.is_unix() then
+    M.opt = require('platform.unix')
 end
 
 return M

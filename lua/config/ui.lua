@@ -10,6 +10,9 @@ vim.opt.cursorline = true
 -- Set ruler
 vim.opt.colorcolumn = '120'
 
+-- Set single statusline for all splits
+vim.opt.laststatus = 3
+
 -- Enable line numbers
 vim.opt.number = true
 

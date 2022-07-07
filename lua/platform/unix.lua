@@ -1,4 +1,5 @@
 return {
+    shell = '/bin/zsh',
     language_servers = {
         sumneko_lua = {
             enabled = true,
@@ -14,7 +15,8 @@ return {
         jedi_language_server = {
             enabled = true,
             cmd = {
-                '~/.local/bin/jedi-language-server'
+                -- '~/.local/bin/jedi-language-server'
+                '~/.jedi'
             },
         }
     }
