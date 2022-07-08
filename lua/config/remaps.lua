@@ -26,10 +26,10 @@ lib.map.nnoremap('<a-l>', ':vertical resize -1<CR>')
 
 
 -- Insert mode movements
-lib.map.inoremap('<c-j>', '<c-o>j')
-lib.map.inoremap('<c-k>', '<c-o>k')
-lib.map.inoremap('<c-h>', '<c-o>h')
-lib.map.inoremap('<c-l>', '<c-o>l')
+lib.map.inoremap('<a-j>', '<c-o>j')
+lib.map.inoremap('<a-k>', '<c-o>k')
+lib.map.inoremap('<a-h>', '<c-o>h')
+lib.map.inoremap('<a-l>', '<c-o>l')
 
 -- Move around lines visually
 lib.map.nnoremap('j', 'gj')
@@ -50,9 +50,8 @@ lib.map.tnoremap('<c-k>', '<c-\\><c-n><c-w>k')
 lib.map.tnoremap('<c-l>', '<c-\\><c-n><c-w>l')
 
 -- Edit config
-local config_dir = vim.fn.stdpath('config')
 local config_cmd = ':tabnew %s <cr>'
-lib.map.nnoremap('<leader>ev', config_cmd:format(config_dir))
+lib.map.nnoremap('<leader>ev', config_cmd:format(lib.os.config_dir))
 
 -- Search
 lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')

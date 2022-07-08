@@ -1,6 +1,6 @@
 return {
     shell = '/bin/zsh',
-    language_servers = {
+    lsp = {
         sumneko_lua = {
             enabled = true,
             cmd = {

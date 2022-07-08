@@ -1,6 +1,6 @@
 return {
     shell = 'D:/Programs/git/bin/bash.exe',
-    language_servers = {
+    lsp = {
         sumneko_lua = {
             enabled = true,
             cmd = {
@@ -8,9 +8,6 @@ return {
                 '-E',
                 'C:\\langsrv\\lua-language-server\\bin\\main.lua',
             }
-        },
-        clangd = {
-            enabled = false
         },
         jedi_language_server = {
             enabled = true,

@@ -1,18 +1,28 @@
-M = {}
+M = {
+    path = {
+        -- Platform specific path delimeter
+        separator = package.config:sub(1, 1),
 
-M.separator = package.config:sub(1, 1)
+        -- Platform specific path join
+        join = function (...)
+            return table.concat({...}, package.config:sub(1, 1))
+        end,
+        --
+        -- Path separator consts
+        UNIX = '/',
+        WINDOWS = '\\'
+    },
 
-function M.join_path(...)
-    return table.concat(arg, M.separator)
-end
+    is_windows = function ()
+        return M.path.separator == M.path.WINDOWS
+    end,
+    is_unix = function ()
+        return M.path.separator == M.path.UNIX
+    end,
 
-function M.is_windows()
-    return M.separator == '\\'
-end
-
-function M.is_unix()
-    return M.separator == '/'
-end
+    -- Set config directory
+    config_dir = vim.fn.stdpath('config')
+}
 
 -- Load platform specific settings
 if M.is_windows then

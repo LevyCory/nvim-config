@@ -1,4 +1,4 @@
--- no one is really happy until you have this shortcuts
+-- no one is really happy until you have these shortcuts
 vim.cmd([[
     cnoreabbrev W! w!
     cnoreabbrev Q! q!

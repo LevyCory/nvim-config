@@ -6,7 +6,7 @@
 --       \ \_______\\__\ \_______\
 --        \|_______\|__|\|_______|
 -- 
--- Cory Levy's init.lua
+-- Cory Levy's Neovim Config
 
 -- Set leader
 vim.g.mapleader = ','
@@ -24,6 +24,8 @@ require 'config.plugins.colorizer'
 require 'config.plugins.telescope'
 require 'config.plugins.treesitter'
 require 'config.plugins.lualine'
+require 'config.plugins.luasnip'
+require 'config.plugins.comment'
 
 -- Set up settings
 require 'config.remaps'

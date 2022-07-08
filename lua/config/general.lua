@@ -34,7 +34,6 @@ vim.opt.wildignore = {
     '*.o',
     '*.pyc',
     '*.a',
-    '*.o'
 }
 
 -- Make backspace behave like you'd expect
@@ -43,26 +42,11 @@ vim.opt.backspace = {'indent', 'eol', 'start'}
 -- Set shell
 vim.opt.shell = lib.os.opt.shell
 
--- Python
--- Abbreviate pdb to 'import pdb; pdb.set_trace()'
-vim.cmd([[
-    augroup init-lua-python
-        au FileType python :iabbrev pdb import pdb; pdb.set_trace()
-    augroup END
-]], false)
-
 -- make/cmake
 vim.cmd([[
     augroup init-lua-make-cmake
       autocmd!
       autocmd FileType make setlocal noexpandtab
       autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-    augroup END
-]])
-
--- C++
-vim.cmd([[
-    augroup init-lua-cpp
-      autocmd BufNewFile,BufRead *.ixx setlocal filetype=cpp
     augroup END
 ]])

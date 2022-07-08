@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 
-if lib.os.opt.language_servers.clangd.enabled then
+if lib.os.opt.lsp.clangd then
     lspconfig.clangd.setup {
         capabilities = lib.cmp.capabilities,
         on_attach = function()
@@ -10,11 +10,11 @@ if lib.os.opt.language_servers.clangd.enabled then
     }
 end
 
-if lib.os.opt.language_servers.sumneko_lua.enabled then
+if lib.os.opt.lsp.sumneko_lua then
     lspconfig.sumneko_lua.setup {
         capabilities = lib.cmp.capabilities,
         on_attach = lib.map.lsp_register_defaults,
-        cmd = lib.os.opt.language_servers.sumneko_lua.cmd ,
+        cmd = lib.os.opt.lsp.sumneko_lua.cmd ,
         settings = {
             Lua = {
                 runtime = {
@@ -34,14 +34,15 @@ if lib.os.opt.language_servers.sumneko_lua.enabled then
     }
 end
 
-if lib.os.opt.language_servers.jedi_language_server.enabled then
+if lib.os.opt.lsp.jedi_language_server then
     lspconfig.jedi_language_server.setup {
-        cmd = lib.os.opt.language_servers.jedi_language_server.cmd,
+        cmd = lib.os.opt.lsp.jedi_language_server.cmd,
         capabilities = lib.cmp.capabilities,
         on_attach = lib.map.lsp_register_defaults
     }
 end
 
+-- Get attached LSP name
 lib.lsp = {
     current_server = function()
         local clients = vim.lsp.get_active_clients()

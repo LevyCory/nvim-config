@@ -1,3 +1,4 @@
+-- Bootstrap packer
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     G_packer_bootstrap = vim.fn.system(
@@ -16,7 +17,7 @@ return lib.packer.startup(function()
     use 'dstein64/vim-startuptime'
 
     -- Comment and uncomment code easily
-    use 'tpope/vim-commentary'
+    use 'numToStr/Comment.nvim'
 
     -- Fuzzy Finder
     use {
