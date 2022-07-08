@@ -28,7 +28,7 @@ require 'config.plugins.luasnip'
 require 'config.plugins.comment'
 
 -- Set up settings
-require 'config.remaps'
+require 'config.mappings'
 require 'config.abbreviations'
 require 'config.ui'
 require 'config.general'

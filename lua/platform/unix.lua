@@ -9,9 +9,7 @@ return {
                 '/usr/local/bin/lua-language-server/bin/main.lua'
             }
         },
-        clangd = {
-            enabled = true
-        },
+        clangd = {},
         jedi_language_server = {
             enabled = true,
             cmd = {
