@@ -13,7 +13,7 @@ luasnip.config.set_config {
 }
 
 luasnip.add_snippets('all', {
-    snippet('masop', fmt('{}& operator=({}&&) noexcept = default;', { insert(1, 'class'), rep(1) })),
+    snippet('print', fmt('std::cout << "{}" << std::endl', { insert(0, 'text') }))
 })
 
 luasnip.add_snippets('cpp', {
@@ -29,6 +29,7 @@ luasnip.add_snippets('cpp', {
     snippet('casop', fmt('{}& operatpr=(const {}&) = delete;', { insert(1, 'class'), rep(1) })),
     snippet('mctor', fmt('{}({}&&) noexcept = default;', { insert(1, 'class'), rep(1) })),
     snippet('masop', fmt('{}& operator=({}&&) noexcept = default;', { insert(1, 'class'), rep(1) })),
+    snippet('print', fmt('std::cout << "{}" << std::endl', { insert(0, 'text') }))
 })
 
 luasnip.add_snippets('python', {

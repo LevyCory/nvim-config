@@ -25,12 +25,17 @@ M = {
 }
 
 -- Load platform specific settings
-if M.is_windows then
+if M.is_windows() then
     M.opt = require('platform.windows')
+elseif M.is_unix() then
+    M.opt = require('platform.unix')
 end
 
-if M.is_unix() then
-    M.opt = require('platform.unix')
+local success, settings = pcall(require, 'local.settings')
+if success then
+    M.machine = settings
+else
+    M.machine = {}
 end
 
 return M

@@ -7,9 +7,6 @@ vim.opt.hlsearch = true
 -- Case insensitive, unless a capital letter is searched for
 vim.opt.smartcase = true
 
--- Turn of search highlights
--- noremap <tab><tab> :nohlsearch<cr>
-
 -- Auto read modified files
 vim.opt.autoread = true
 
@@ -40,7 +37,9 @@ vim.opt.wildignore = {
 vim.opt.backspace = {'indent', 'eol', 'start'}
 
 -- Set shell
-vim.opt.shell = lib.os.opt.shell
+if lib.os.machine.shell then
+    vim.opt.shell = lib.os.machine.shell
+end
 
 -- make/cmake
 vim.cmd([[
