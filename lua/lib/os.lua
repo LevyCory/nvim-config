@@ -1,3 +1,4 @@
+-- OS Specific functionaliy and settings
 M = {
     path = {
         -- Platform specific path delimeter
@@ -31,11 +32,5 @@ elseif M.is_unix() then
     M.opt = require('platform.unix')
 end
 
-local success, settings = pcall(require, 'local.settings')
-if success then
-    M.machine = settings
-else
-    M.machine = {}
-end
 
 return M
