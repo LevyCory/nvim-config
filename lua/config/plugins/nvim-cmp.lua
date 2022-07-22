@@ -17,7 +17,7 @@ cmp.setup({
         { name = 'luasnip' }
     }, {
         { name = 'buffer' },
-        { name = 'orgmode' }
+        { name = 'neorg' }
     })
 })
 

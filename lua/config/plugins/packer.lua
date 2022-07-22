@@ -58,10 +58,11 @@ return lib.packer.startup(function()
         run = ':TSUpdate'
     }
 
-    -- use {
-	    -- 'nvim-treesitter/playground',
-	    -- disabled = true
-    -- }
+    use {
+        'nvim-neorg/neorg',
+        requires = 'nvim-lua/plenary.nvim',
+        tag = '*'
+    }
 
     -- File Tree Viewer
     use {
