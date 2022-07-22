@@ -38,7 +38,7 @@ luasnip.add_snippets('python', {
 
 -- Set snippet expansion key
 -- TODO: Maybe set to something less overused than tab
-vim.keymap.set({ 'i', 's'}, '<tab>', function()
+vim.keymap.set({ 'i', 's'}, '<C-k>', function()
         if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
         end
