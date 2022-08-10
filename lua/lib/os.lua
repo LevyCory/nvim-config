@@ -22,7 +22,8 @@ M = {
     end,
 
     -- Set config directory
-    config_dir = vim.fn.stdpath('config')
+    config_dir = vim.fn.stdpath('config'),
+    data_dir = vim.fn.stdpath('data')
 }
 
 -- Load platform specific settings

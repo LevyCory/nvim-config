@@ -71,7 +71,10 @@ return lib.packer.startup(function()
 	}
 
     -- Start screen
-    use 'mhinz/vim-startify'
+    use {
+        'echasnovski/mini.nvim',
+        branch = 'stable'
+    }
 
     -- Needed for configuring nvim-qt
 	use 'equalsraf/neovim-gui-shim'
