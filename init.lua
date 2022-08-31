@@ -26,7 +26,7 @@ require 'config.plugins.treesitter'
 require 'config.plugins.neorg'
 require 'config.plugins.lualine'
 require 'config.plugins.luasnip'
-require 'config.plugins.mini'
+require 'config.plugins.startify'
 require 'config.plugins.comment'
 
 -- Set up settings

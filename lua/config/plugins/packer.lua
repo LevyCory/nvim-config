@@ -4,6 +4,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     G_packer_bootstrap = vim.fn.system(
         {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
     )
+
+    vim.cmd('packadd packer.nvim')
 end
 
 lib.packer = require('packer')
@@ -71,10 +73,7 @@ return lib.packer.startup(function()
 	}
 
     -- Start screen
-    use {
-        'echasnovski/mini.nvim',
-        branch = 'stable'
-    }
+    use 'mhinz/vim-startify'
 
     -- Needed for configuring nvim-qt
 	use 'equalsraf/neovim-gui-shim'

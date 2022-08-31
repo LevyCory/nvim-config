@@ -12,10 +12,6 @@ luasnip.config.set_config {
     enable_autosnippets = true
 }
 
-luasnip.add_snippets('all', {
-    snippet('print', fmt('std::cout << "{}" << std::endl', { insert(0, 'text') }))
-})
-
 luasnip.add_snippets('cpp', {
     snippet('str', { text('std::string') }),
     snippet('cstr', { text('const std::string') }),
@@ -44,6 +40,10 @@ vim.keymap.set({ 'i', 's'}, '<C-k>', function()
         end
     end, { silent = true }
 )
+
+-- Snippet Debugging
+luasnip.add_snippets('all', {
+})
 
 -- Reload this file with a mapping for easier debugging
 local cmd = '<cmd>source %s<cr>'
