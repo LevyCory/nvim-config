@@ -5,7 +5,7 @@ if lib.os.opt.lsp.clangd then
         capabilities = lib.cmp.capabilities,
         on_attach = function()
             lib.map.lsp_register_defaults()
-            vim.keymap.set('n', '<c-t>', ':ClangdSwitchSourceHeader<cr>', { buffer = 0})
+            vim.keymap.set('n', '<c-t>', ':ClangdSwitchSourceHeader<cr>', { buffer = 0, silent = true})
         end
     }
 end

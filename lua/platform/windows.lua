@@ -1,5 +1,4 @@
 return {
-    shell = 'D:/Programs/git/bin/bash.exe',
     lsp = {
         sumneko_lua = {
             enabled = true,
