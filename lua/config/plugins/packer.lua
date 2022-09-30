@@ -16,7 +16,8 @@ return lib.packer.startup(function()
     -- Cache for faster startup
     use 'lewis6991/impatient.nvim'
 
-    use 'dstein64/vim-startuptime'
+    -- Debug startuptime
+    -- use 'dstein64/vim-startuptime'
 
     -- Comment and uncomment code easily
     use 'numToStr/Comment.nvim'
@@ -32,7 +33,7 @@ return lib.packer.startup(function()
 	-- Status Line
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+		requires = {'kyazdani42/nvim-web-devicons'}
 	}
 
     -- Snippets

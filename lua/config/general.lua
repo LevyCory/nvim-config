@@ -38,7 +38,6 @@ vim.opt.backspace = {'indent', 'eol', 'start'}
 
 -- Set shell
 if lib.machine.shell then
-    print(lib.machine.shell)
     vim.opt.shell = lib.machine.shell
 end
 
