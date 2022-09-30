@@ -1,5 +1,5 @@
 -- Set Colorscheme
-vim.cmd('colorscheme onedark')
+vim.cmd.colorscheme('onedark');
 
 -- Set Font
 lib.ui.set_font('Consolas NF:h14')
@@ -21,3 +21,6 @@ vim.opt.splitright = true
 
 -- Disable mouse
 vim.opt.mouse = ''
+
+-- Remove the command bar
+vim.opt.cmdheight = 0
