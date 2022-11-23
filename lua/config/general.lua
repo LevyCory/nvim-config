@@ -31,6 +31,7 @@ vim.opt.wildignore = {
     '*.o',
     '*.pyc',
     '*.a',
+    '*.obj'
 }
 
 -- Make backspace behave like you'd expect
