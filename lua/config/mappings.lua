@@ -39,6 +39,10 @@ lib.map.nnoremap('k', 'gk')
 lib.map.nnoremap('<c-X>', 'ZZ')
 lib.map.inoremap('jj', '<esc>')
 
+-- Font size control
+vim.keymap.set('n', '<m-=>', lib.ui.increase_font_size)
+vim.keymap.set('n', '<m-->', lib.ui.decrease_font_size)
+
 -- Terminal control
 lib.map.nnoremap('<leader>tt', ':vs | :term<cr>')
 lib.map.tnoremap('<Esc>', '<c-\\><c-n>')

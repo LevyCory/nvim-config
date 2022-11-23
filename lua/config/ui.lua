@@ -2,7 +2,7 @@
 vim.cmd('colorscheme onedark')
 
 -- Set Font
-lib.ui.set_font('Consolas NF:h14')
+lib.ui.set_font('Consolas NF', 14)
 
 -- Highlight line under cursor
 vim.opt.cursorline = true
