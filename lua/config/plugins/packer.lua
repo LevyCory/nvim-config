@@ -88,7 +88,6 @@ return lib.packer.startup(function()
       requires = {
         'nvim-lua/plenary.nvim'
       },
-      tag = 'release'
     }
 
     -- Rust plugin

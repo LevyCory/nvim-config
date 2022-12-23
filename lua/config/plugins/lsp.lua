@@ -97,7 +97,6 @@ require('lspconfig').clangd.setup {
 require('lspconfig').sumneko_lua.setup {
     capabilities = lib.cmp.capabilities,
     on_attach = lib.lsp.on_attach,
-    cmd = lib.os.opt.lsp.sumneko_lua.cmd,
     settings = {
         Lua = {
             runtime = {
