@@ -4,7 +4,7 @@ require('nvim-treesitter.install').compilers = {
 }
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = {'c', 'cpp', 'lua', 'python', 'norg'},
+    ensure_installed = {'c', 'cpp', 'lua', 'python', 'norg', 'rust'},
     highlight = {
       enable = true,              -- false will disable the whole extension
       additional_vim_regex_highlighting = false,
