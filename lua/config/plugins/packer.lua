@@ -16,6 +16,10 @@ return lib.packer.startup(function()
     -- Cache for faster startup
     use 'lewis6991/impatient.nvim'
 
+    -- Mason
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+
     -- Debug startuptime
     -- use 'dstein64/vim-startuptime'
 
@@ -63,8 +67,7 @@ return lib.packer.startup(function()
 
     use {
         'nvim-neorg/neorg',
-        requires = 'nvim-lua/plenary.nvim',
-        tag = '*'
+        run = ':Neorg sync-parsers',
     }
 
     -- File Tree Viewer

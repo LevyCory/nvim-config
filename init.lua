@@ -16,6 +16,7 @@ require 'config.preload'
 
 -- Set up plugins
 require 'config.plugins.packer'
+require 'config.plugins.mason'
 require 'config.plugins.nvim-cmp'
 require 'config.plugins.lsp'
 require 'config.plugins.nvim-tree'
