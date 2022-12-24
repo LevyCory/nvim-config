@@ -22,6 +22,9 @@ vim.opt.expandtab = true
 vim.opt.ai = true
 vim.opt.wrap = true
 
+-- Save undo history
+vim.opt.undofile = true
+
 -- Don't redraw buffer while macros are running
 vim.opt.lazyredraw = true
 

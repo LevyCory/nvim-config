@@ -60,26 +60,28 @@ lib.lsp = {
     end
 }
 
+local default_configuration = {
+    'rust_analyzer',
+    'pyright',
+}
+
+local custom_configuration = {
+    'clangd',
+    'sumneko_lua'
+}
+
 -- Install language servers
 require('mason-lspconfig').setup {
-    ensure_installed = {
-        'clangd',
-        'rust_analyzer',
-        'pyright',
-        'sumneko_lua'
-    }
+    ensure_installed = vim.list_extend(default_configuration, custom_configuration)
 }
 
 -- Default LSP configuration
-local function default_setup(lsp_server)
+for _, lsp_server in ipairs(default_configuration) do
     require('lspconfig')[lsp_server].setup {
         on_attach = lib.lsp.on_attach,
         capabilities = lib.cmp.capabilities
     }
 end
-
-default_setup('pyright')
-default_setup('rust_analyzer')
 
 -- Custom LSP configuration
 require('lspconfig').clangd.setup {

@@ -1,15 +1,15 @@
 -- Bootstrap packer
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    G_packer_bootstrap = vim.fn.system(
-        {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
-    )
+local is_bootstrap = false
 
-    vim.cmd('packadd packer.nvim')
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    is_bootstrap = true
+    vim.fn.system {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
+    vim.cmd [[packadd packer.nvim]]
 end
 
 lib.packer = require('packer')
-return lib.packer.startup(function()
+lib.packer.startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -29,15 +29,13 @@ return lib.packer.startup(function()
     -- Fuzzy Finder
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {
-            { 'nvim-lua/plenary.nvim' }
-        }
+        requires = 'nvim-lua/plenary.nvim',
     }
 
 	-- Status Line
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = {'kyazdani42/nvim-web-devicons'}
+		requires = 'kyazdani42/nvim-web-devicons'
 	}
 
     -- Snippets
@@ -46,6 +44,14 @@ return lib.packer.startup(function()
 
     -- LSP
     use 'neovim/nvim-lspconfig'
+
+    -- LSP status spinner
+    use {
+        'j-hui/fidget.nvim',
+        config = function()
+            require('fidget').setup {}
+        end
+    }
 
     -- Autocomplete
     use {
@@ -84,16 +90,14 @@ return lib.packer.startup(function()
 
     -- Git integration
     use {
-      'lewis6991/gitsigns.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim'
-      },
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
     }
 
     -- Rust plugin
     use 'rust-lang/rust.vim'
 
-    -- Colorizer
+    -- Hex color highlighter
     use 'norcalli/nvim-colorizer.lua'
 
     -- Colors
@@ -103,7 +107,26 @@ return lib.packer.startup(function()
     use 'EdenEast/nightfox.nvim'
     use 'navarasu/onedark.nvim'
 
-    if G_packer_bootstrap then
-      lib.packer.sync()
+    if is_bootstrap then
+        lib.packer.sync()
     end
 end)
+
+if is_bootstrap then
+    print '=================================='
+    print '    Plugins are being installed'
+    print '    Wait until Packer completes,'
+    print '       then restart nvim'
+    print '=================================='
+    return
+end
+
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd(
+    'BufWritePost',
+    {
+        command = 'source <afile> | PackerCompile',
+        group = packer_group,
+        pattern = vim.fn.expand '$MYVIMRC',
+    }
+)
