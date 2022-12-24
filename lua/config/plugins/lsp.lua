@@ -1,5 +1,5 @@
--- Get attached LSP name
 lib.lsp = {
+    -- Get attached LSP name
     current_server = function()
         local clients = vim.lsp.get_active_clients()
         if next(clients) == nil then
@@ -59,60 +59,57 @@ lib.lsp = {
         end, { desc = 'Format current buffer with LSP' })
     end
 }
-
-local default_configuration = {
-    'rust_analyzer',
-    'pyright',
-}
-
-local custom_configuration = {
-    'clangd',
-    'sumneko_lua'
-}
-
 -- Install language servers
 require('mason-lspconfig').setup {
-    ensure_installed = vim.list_extend(default_configuration, custom_configuration)
-}
-
--- Default LSP configuration
-for _, lsp_server in ipairs(default_configuration) do
-    require('lspconfig')[lsp_server].setup {
-        on_attach = lib.lsp.on_attach,
-        capabilities = lib.cmp.capabilities
+    ensure_installed = {
+        'rust_analyzer',
+        'jedi_language_server',
+        'clangd',
+        'sumneko_lua',
     }
-end
-
--- Custom LSP configuration
-require('lspconfig').clangd.setup {
-    capabilities = lib.cmp.capabilities,
-    on_attach = function(_, buffer_number)
-        lib.lsp.on_attach(_, buffer_number)
-        vim.keymap.set('n', '<c-t>', ':ClangdSwitchSourceHeader<cr>', {
-            buffer = buffer_number,
-            silent = true,
-            desc = 'LSP: Toggle header/source'
-        })
-    end
 }
 
-require('lspconfig').sumneko_lua.setup {
-    capabilities = lib.cmp.capabilities,
-    on_attach = lib.lsp.on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            diagnostics = {
-                globals = { 'vim', 'use', 'next', 'ipairs' }
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file('', true)
-            },
-            telemetry = {
-                enable = false
+local lspconfig = require('lspconfig')
+require('mason-lspconfig').setup_handlers {
+    function (server)
+        lspconfig[server].setup {
+            on_attach = lib.lsp.on_attach,
+            capabilities = lib.cmp.capabilities
+        }
+    end,
+    ['clangd'] = function ()
+        lspconfig.clangd.setup {
+            capabilities = lib.cmp.capabilities,
+            on_attach = function(_, buffer_number)
+                lib.lsp.on_attach(_, buffer_number)
+                vim.keymap.set('n', '<c-t>', ':ClangdSwitchSourceHeader<cr>', {
+                    buffer = buffer_number,
+                    silent = true,
+                    desc = 'LSP: Toggle header/source'
+                })
+            end
+        }
+    end,
+    ['sumneko_lua'] = function ()
+        lspconfig.sumneko_lua.setup {
+            capabilities = lib.cmp.capabilities,
+            on_attach = lib.lsp.on_attach,
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT'
+                    },
+                    diagnostics = {
+                        globals = { 'vim', 'use', 'next', 'ipairs' }
+                    },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file('', true)
+                    },
+                    telemetry = {
+                        enable = false
+                    }
+                }
             }
         }
-    }
+    end,
 }
