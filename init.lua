@@ -34,6 +34,7 @@ require 'config.plugins.comment'
 require 'config.mappings'
 require 'config.abbreviations'
 require 'config.ui'
+require 'config.root'
 require 'config.general'
 
 -- Call postload config
