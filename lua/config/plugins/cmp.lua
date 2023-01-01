@@ -38,6 +38,10 @@ cmp.setup {
         { name = 'neorg' },
         { name = 'path' },
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
 }
 
 lib.cmp = { capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()) }
