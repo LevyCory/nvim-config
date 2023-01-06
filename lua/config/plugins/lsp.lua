@@ -37,7 +37,7 @@ lib.lsp = {
 
         -- See `:help K` for why this keymap
         lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
-        lsp_map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+        lsp_map('<M-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
         -- Lesser used LSP functionality
         lsp_map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
