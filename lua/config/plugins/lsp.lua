@@ -65,7 +65,7 @@ require('mason-lspconfig').setup {
         'rust_analyzer',
         'jedi_language_server',
         'clangd',
-        'sumneko_lua',
+        'lua_ls',
     }
 }
 
@@ -90,8 +90,8 @@ require('mason-lspconfig').setup_handlers {
             end
         }
     end,
-    ['sumneko_lua'] = function ()
-        lspconfig.sumneko_lua.setup {
+    ['lua_ls'] = function ()
+        lspconfig.lua_ls.setup {
             capabilities = lib.cmp.capabilities,
             on_attach = lib.lsp.on_attach,
             settings = {
