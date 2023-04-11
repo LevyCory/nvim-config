@@ -1,7 +1,11 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
-telescope.setup {}
+telescope.setup {
+    file_ignore_patterns = {
+        '*target/*',
+    }
+}
 
 local function map_telescope(shortcut, func, desc)
     vim.keymap.set('n', shortcut, func, { desc = 'Telescope: ' .. desc })

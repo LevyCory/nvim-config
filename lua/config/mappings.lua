@@ -25,6 +25,12 @@ lib.map.inoremap('<a-k>', '<c-o>k')
 lib.map.inoremap('<a-h>', '<c-o>h')
 lib.map.inoremap('<a-l>', '<c-o>l')
 
+-- Spell checker
+vim.keymap.set('n', '<F2>', ':set spell!<CR>', { desc = 'Toggle spell checker' })
+vim.keymap.set('n', '<F3>', 'zg', { desc = 'Spell: Mark word as correct' })
+vim.keymap.set('n', '<F4>', 'zw', { desc = 'Spell: Mark word as correct' })
+vim.keymap.set('n', '<F5>', 'z=', { desc = 'Spell: Suggest word' })
+
 -- Move around lines visually
 lib.map.nnoremap('j', 'gj')
 lib.map.nnoremap('k', 'gk')
