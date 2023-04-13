@@ -15,20 +15,8 @@ vim.g.mapleader = ','
 require 'config.preload'
 
 -- Set up plugins
-require 'config.plugins.packer'
-require 'config.plugins.mason'
-require 'config.plugins.luasnip'
-require 'config.plugins.cmp'
-require 'config.plugins.lsp'
-require 'config.plugins.tree'
-require 'config.plugins.gitsigns'
-require 'config.plugins.colorizer'
-require 'config.plugins.telescope'
-require 'config.plugins.treesitter'
-require 'config.plugins.neorg'
-require 'config.plugins.lualine'
-require 'config.plugins.startify'
-require 'config.plugins.comment'
+require 'config.lazy'
+require 'config.neovide'
 
 -- Set up settings
 require 'config.mappings'
