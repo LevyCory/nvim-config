@@ -1,13 +1,43 @@
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    opts = {
-        file_ignore_patterns = {
-            '*target/*',
-        }
-    },
     lazy = false,
     config = function()
+        local actions = require('telescope.actions')
+        require('telescope').setup {
+            defaults = {
+                file_ignore_patterns = {
+                    '.git/',
+                    '.cache/',
+                    'target/',
+                    '%.o',
+                    '%.a',
+                },
+                mappings = {
+                    i = {
+                        ['<esc>'] = actions.close,
+                        -- Clear prompt
+                        ['<c-u>'] = false,
+                        -- Delete buffer
+                        ['<c-d>'] = actions.delete_buffer + actions.move_to_top,
+                        -- Cycle previews for git commit to show the full message
+                        ['<C-s>'] = actions.cycle_previewers_next,
+                        ['<C-a>'] = actions.cycle_previewers_prev,
+                    },
+                },
+                vimgrep_arguments = {
+                    'rg',
+                    '--color=never',
+                    '--no-heading',
+                    '--with-filename',
+                    '--line-number',
+                    '--column',
+                    '--smart-case',
+                    '--trim' -- add this value
+                },
+            }
+        }
+
         local function telescope_map(shortcut, func, desc)
             vim.keymap.set('n', shortcut, func, { desc = 'Telescope: ' .. desc })
         end
