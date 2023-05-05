@@ -10,4 +10,5 @@ return {
     'hzchirs/vim-material',
     'shaunsingh/nord.nvim',
     'EdenEast/nightfox.nvim',
+    { 'catppuccin/nvim', name = 'catppuccin' },
 }
