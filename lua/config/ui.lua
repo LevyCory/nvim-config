@@ -1,5 +1,5 @@
 -- Set Colorscheme
-vim.cmd.colorscheme('onedark');
+vim.cmd.colorscheme('catppuccin-macchiato');
 
 -- Set Font
 lib.ui.set_font('Consolas NF', 14)

@@ -1,8 +1,9 @@
 return {
     {
-        'navarasu/onedark.nvim',
+        'catppuccin/nvim',
+        name = 'catppuccin',
         lazy = false,
-        priority = 1000
+        priority = 1000,
     },
 
     'folke/tokyonight.nvim',
@@ -10,4 +11,5 @@ return {
     'hzchirs/vim-material',
     'shaunsingh/nord.nvim',
     'EdenEast/nightfox.nvim',
+    'navarasu/onedark.nvim',
 }
