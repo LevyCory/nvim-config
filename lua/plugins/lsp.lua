@@ -15,6 +15,7 @@ local function on_attach(_, buffer_number)
     lsp_map('<leader>td', vim.lsp.buf.type_definition, 'Type [D]efinition')
     lsp_map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     lsp_map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    lsp_map('<leader>oc', vim.lsp.buf.outgoing_calls, '[O]utgoing [C]alls')
 
     -- See `:help K` for why this keymap
     lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
