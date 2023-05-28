@@ -21,7 +21,7 @@ return {
     lazy = false,
     opts = {
         options = {
-            theme = 'auto',
+            theme = 'catppuccin',
             component_separators = '|',
             section_separators = { left = '', right = '' },
         },

@@ -1,27 +1,4 @@
 return {
-    -- Mason
-    -- 'williamboman/mason.nvim',
-    -- 'williamboman/mason-lspconfig.nvim',
-
-    -- LSP
-    -- 'neovim/nvim-lspconfig',
-
-    -- Snippets
-    -- 'L3MON4D3/LuaSnip',
-    -- 'saadparwaiz1/cmp_luasnip',
-
-    -- Autocomplete
-    -- {
-    --     'hrsh7th/nvim-cmp',
-    --     dependencies = {
-    --         'hrsh7th/cmp-nvim-lsp',
-    --         'hrsh7th/cmp-nvim-lua',
-    --         'hrsh7th/cmp-buffer',
-    --         'hrsh7th/cmp-path',
-    --         'hrsh7th/cmp-cmdline'
-    --     }
-    -- },
-
     -- Needed for configuring nvim-qt
     'equalsraf/neovim-gui-shim',
 
@@ -34,7 +11,10 @@ return {
     -- Comment and uncomment code easily
     {
         'numToStr/Comment.nvim',
-        event = 'BufReadPost',
+        event = {
+            'BufReadPost',
+            'BufNewFile',
+        },
         opts = {}
     },
 
@@ -43,14 +23,43 @@ return {
         'j-hui/fidget.nvim',
         event = 'LspAttach',
         config = function()
-            require('fidget').setup {}
+            require('fidget').setup {
+                window = {
+                    blend = 0,
+                },
+            }
         end,
+    },
+
+    -- Tabline
+    {
+        'alvarosevilla95/luatab.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        lazy = false,
+        config = function()
+            require('luatab').setup()
+        end
     },
 
     -- Hex color highlighter
     {
         'norcalli/nvim-colorizer.lua',
         event = 'BufReadPost',
-        opts = {}
-    }
+        config = function()
+            require('colorizer').setup()
+        end
+    },
+
+    -- Automatically insert closing brackets/braces/quotes
+    {
+        'windwp/nvim-autopairs',
+        version = false,
+        event = {
+            'BufReadPost',
+            'BufNewFile',
+        },
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    },
 }
