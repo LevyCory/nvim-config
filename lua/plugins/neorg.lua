@@ -1,24 +1,28 @@
 return {
     'nvim-neorg/neorg',
+    enable = false,
     ft = 'norg',
     build = ':Neorg sync-parsers',
-    -- enabled = lib.machine.neorg,
-    enabled = false,
-    opts = {
-        load = {
-            ['core.defaults'] = {},
-            ['core.norg.concealer'] = {},
-            ['core.norg.dirman'] = {
-                config = {
-                    -- workspaces = lib.machine.neorg.workspaces
-                }
-            },
-            ['core.gtd.base'] = {
-                config = {
-                    -- workspace = lib.machine.neorg.gtd.workspace
-                }
-            },
-            ['core.integrations.nvim-cmp'] = {},
+    config = function()
+        require('neorg').setup {
+            load = {
+                ['core.defaults'] = {},
+                ['core.concealer'] = {},
+                ['core.completion'] = {
+                    config = {
+                        engine = 'nvim-cmp'
+                    }
+                },
+                ['core.integrations.nvim-cmp'] = {},
+                ['core.dirman'] = {
+                    config = {
+                        wokrspaces = {
+                            work = '~/docs',
+                        },
+                        index = 'index.norg'
+                    },
+                },
+            }
         }
-    }
+    end
 }

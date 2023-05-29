@@ -103,7 +103,11 @@ return {
                                     version = 'LuaJIT'
                                 },
                                 diagnostics = {
-                                    globals = { 'vim', 'use', 'next', 'ipairs' }
+                                    globals = {
+                                        'vim',
+                                        'next',
+                                        'ipairs'
+                                    }
                                 },
                                 workspace = {
                                     library = vim.api.nvim_get_runtime_file('', true),
