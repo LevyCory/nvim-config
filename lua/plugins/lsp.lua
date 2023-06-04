@@ -44,14 +44,6 @@ end
 
 return {
     {
-        'williamboman/mason.nvim',
-        opts = {
-            ui = {
-                border = 'single'
-            }
-        }
-    },
-    {
         'williamboman/mason-lspconfig.nvim',
         dependencies = {
             'williamboman/mason.nvim',
