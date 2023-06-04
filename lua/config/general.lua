@@ -41,8 +41,8 @@ vim.opt.wildignore = {
 vim.opt.backspace = {'indent', 'eol', 'start'}
 
 -- Set shell
-if lib.machine.shell then
-    vim.opt.shell = lib.machine.shell
+if vim.fn.environ()['SHELL'] ~= nil then
+    vim.opt.shell = vim.fn.environ()['SHELL']
 end
 
 -- make/cmake
