@@ -67,7 +67,8 @@ return {
                     'jedi_language_server',
                     'clangd',
                     'lua_ls',
-                }
+                    'json_lsp',
+                },
             }
 
             local lspconfig = require('lspconfig')
