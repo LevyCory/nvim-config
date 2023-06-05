@@ -59,7 +59,6 @@ return {
                     'jedi_language_server',
                     'clangd',
                     'lua_ls',
-                    'json_lsp',
                 },
             }
 
