@@ -56,7 +56,7 @@ return {
             require('mason-lspconfig').setup {
                 ensure_installed = {
                     'rust_analyzer',
-                    'jedi_language_server',
+                    'pylsp',
                     'clangd',
                     'lua_ls',
                 },
