@@ -4,6 +4,8 @@ return {
     lazy = false,
     config = function()
         local actions = require('telescope.actions')
+        local trouble = require('trouble.providers.telescope')
+
         require('telescope').setup {
             defaults = {
                 file_ignore_patterns = {
@@ -12,6 +14,9 @@ return {
                     'target/',
                     '%.o',
                     '%.a',
+                    'externals/*',
+                    '3rd_parties/*',
+                    '3rd_party/*',
                 },
                 mappings = {
                     i = {
@@ -23,6 +28,11 @@ return {
                         -- Cycle previews for git commit to show the full message
                         ['<C-s>'] = actions.cycle_previewers_next,
                         ['<C-a>'] = actions.cycle_previewers_prev,
+                        -- Open results in trouble
+                        ['<C-t>'] = trouble.open_with_trouble,
+                    },
+                    n = {
+                        ['<C-t>'] = trouble.open_with_trouble,
                     },
                 },
                 vimgrep_arguments = {
@@ -35,7 +45,13 @@ return {
                     '--smart-case',
                     '--trim' -- add this value
                 },
-            }
+            },
+            pickers = {
+                find_files = {
+                    theme = 'ivy',
+                    previewer = false
+                },
+            },
         }
 
         local function telescope_map(shortcut, func, desc)
