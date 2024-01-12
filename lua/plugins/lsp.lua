@@ -1,3 +1,33 @@
+local function setup_lsp_diagnostics()
+    local function define_lsp_symbol(name, icon)
+        vim.fn.sign_define(
+            'DiagnosticSign' .. name,
+            { text = icon, numhl = 'DiagnosticDefault' .. name }
+        )
+    end
+
+    define_lsp_symbol('Error', '')
+    define_lsp_symbol('Information', '')
+    define_lsp_symbol('Hint', '')
+    define_lsp_symbol('Info', '')
+    define_lsp_symbol('Warning', '')
+
+    lib.state.lsp_diagnostic_virtual_text = true
+    local function lsp_diagnostic_virtual_text_toggle()
+        vim.diagnostic.config({
+            virtual_text = lib.state.lsp_diagnostic_virtual_text,
+            underline = true,
+            signs = true,
+            severity_sort = true,
+        })
+
+        lib.state.lsp_diagnostic_virtual_text = not lib.state.lsp_diagnostic_virtual_text
+    end
+
+    lsp_diagnostic_virtual_text_toggle()
+    vim.keymap.set('n', '<leader>vt', lsp_diagnostic_virtual_text_toggle, { desc = 'LSP: Toggle diagnostics [V]irtual [T]ext' })
+end
+
 local function on_attach(_, buffer_number)
     local lsp_map = function(keys, func, desc)
         if desc then
@@ -40,6 +70,9 @@ local function on_attach(_, buffer_number)
             vim.lsp.buf.formatting()
         end
     end, { desc = 'Format current buffer with LSP' })
+
+    -- Set up LSP diagnostics
+    setup_lsp_diagnostics()
 end
 
 return {
