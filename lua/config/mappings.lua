@@ -54,3 +54,6 @@ lib.map.tnoremap('<c-l>', '<c-\\><c-n><c-w>l')
 
 -- Search
 lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')
+
+-- Disable cmdline history
+lib.map.nnoremap('q:', '<nop>')
