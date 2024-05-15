@@ -28,7 +28,7 @@ lib.map.inoremap('<a-l>', '<c-o>l')
 -- Spell checker
 vim.keymap.set('n', '<F2>', ':set spell!<CR>', { desc = 'Toggle spell checker' })
 vim.keymap.set('n', '<F3>', 'zg', { desc = 'Spell: Mark word as correct' })
-vim.keymap.set('n', '<F4>', 'zw', { desc = 'Spell: Mark word as correct' })
+vim.keymap.set('n', '<F4>', 'zw', { desc = 'Spell: Mark word as incorrect' })
 vim.keymap.set('n', '<F5>', 'z=', { desc = 'Spell: Suggest word' })
 
 -- Move around lines visually
@@ -57,3 +57,13 @@ lib.map.nnoremap('<tab><tab>', ':nohlsearch<cr>')
 
 -- Disable cmdline history
 lib.map.nnoremap('q:', '<nop>')
+
+-- Disable default completion menu
+vim.keymap.set('i', '<c-n>', '<nop>')
+vim.keymap.set('i', '<c-p>', '<nop>')
+
+-- Disable arrows (to be used with nvim-cmp)
+vim.keymap.set('i', '<Up>', '<nop>')
+vim.keymap.set('i', '<Down>', '<nop>')
+vim.keymap.set('i', '<Left>', '<nop>')
+vim.keymap.set('i', '<Right>', '<nop>')

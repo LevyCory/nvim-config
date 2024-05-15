@@ -25,7 +25,8 @@ local function setup_lsp_diagnostics()
     end
 
     lsp_diagnostic_virtual_text_toggle()
-    vim.keymap.set('n', '<leader>vt', lsp_diagnostic_virtual_text_toggle, { desc = 'LSP: Toggle diagnostics [V]irtual [T]ext' })
+    vim.keymap.set('n', '<leader>vt', lsp_diagnostic_virtual_text_toggle,
+        { desc = 'LSP: Toggle diagnostics [V]irtual [T]ext' })
 end
 
 local function on_attach(_, buffer_number)
@@ -115,7 +116,16 @@ return {
                                 silent = true,
                                 desc = 'LSP: Toggle header/source'
                             })
-                        end
+                        end,
+                        cmd = {
+                            'clangd',
+                            '-j=6',
+                            '--background-index',
+                            '--header-insertion=never',
+                            '--fallback-style=google',
+                            '--header-insertion-decorators',
+                            '--all-scopes-completion',
+                        }
                     }
                 end,
                 ['lua_ls'] = function()

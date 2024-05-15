@@ -1,4 +1,3 @@
-
 return {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -13,7 +12,6 @@ return {
         local cmp = require('cmp')
         local luasnip = require('luasnip')
 
-        vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
         cmp.setup {
             snippet = {
@@ -21,7 +19,7 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            mapping = cmp.mapping.preset.insert {
+            mapping = cmp.mapping.preset.insert({
                 ['<C-space>'] = cmp.mapping.complete(),
                 ['<CR>'] = cmp.mapping.confirm { select = true },
                 ['<Tab>'] = cmp.mapping(function(fallback)
@@ -36,21 +34,40 @@ return {
                 ['<S-Tab>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
-                    elseif luasnip.jumpable( -1) then
-                        luasnip.jump( -1)
+                    elseif luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
                     else
                         fallback()
                     end
                 end, { 'i', 's' }),
-            },
+                ['<Down>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        return cmp.select_next_item()
+                    end
+
+                    fallback()
+                end, { 'i', 's' }),
+                ['<Up>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        return cmp.select_prev_item()
+                    end
+
+                    fallback()
+                end, { 'i', 's' }),
+                ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-j>'] = cmp.mapping.scroll_docs(4),
+                ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
+                ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
+            }),
             sources = cmp.config.sources {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }
-            }, {
-            { name = 'buffer' },
-            { name = 'neorg' },
-            { name = 'path' },
-        },
+            },
+            {
+                { name = 'buffer' },
+                { name = 'neorg' },
+                { name = 'path' },
+            },
             window = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),

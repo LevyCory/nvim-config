@@ -10,9 +10,6 @@ vim.opt.smartcase = true
 -- Auto read modified files
 vim.opt.autoread = true
 
--- Visual autocomplete
-vim.opt.wildmenu = true
-
 -- Make tabs be 4 spaces wide
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -28,6 +25,9 @@ vim.opt.undofile = true
 -- Don't redraw buffer while macros are running
 vim.opt.lazyredraw = true
 
+-- Disable the default keyword completion
+vim.opt.completeopt = {}
+--
 -- Ignore garbage files
 vim.opt.wildignore = {
     '*.swp',
