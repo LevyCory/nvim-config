@@ -6,11 +6,12 @@ local function setup_lsp_diagnostics()
         )
     end
 
-    define_lsp_symbol('Error', '')
-    define_lsp_symbol('Information', '')
+    define_lsp_symbol('Error', '')
+    define_lsp_symbol('Information', '')
     define_lsp_symbol('Hint', '')
-    define_lsp_symbol('Info', '')
+    define_lsp_symbol('Info', '')
     define_lsp_symbol('Warning', '')
+
 
     lib.state.lsp_diagnostic_virtual_text = true
     local function lsp_diagnostic_virtual_text_toggle()
@@ -90,7 +91,7 @@ return {
             require('mason-lspconfig').setup {
                 ensure_installed = {
                     'rust_analyzer',
-                    'pylsp',
+                    'jedi_language_server',
                     'clangd',
                     'lua_ls',
                 },

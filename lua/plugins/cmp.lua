@@ -8,6 +8,10 @@ return {
         'hrsh7th/cmp-cmdline',
         'saadparwaiz1/cmp_luasnip',
     },
+    event = {
+        'BufReadPost',
+        'BufNewFile'
+    },
     config = function()
         local cmp = require('cmp')
         local luasnip = require('luasnip')

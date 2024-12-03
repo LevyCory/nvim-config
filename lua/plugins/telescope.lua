@@ -29,10 +29,10 @@ return {
                         ['<C-s>'] = actions.cycle_previewers_next,
                         ['<C-a>'] = actions.cycle_previewers_prev,
                         -- Open results in trouble
-                        ['<C-t>'] = trouble.open_with_trouble,
+                        ['<C-t>'] = require('trouble.sources.telescope').open,
                     },
                     n = {
-                        ['<C-t>'] = trouble.open_with_trouble,
+                        ['<C-t>'] = require('trouble.sources.telescope').open,
                     },
                 },
                 vimgrep_arguments = {

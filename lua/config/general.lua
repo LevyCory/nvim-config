@@ -38,7 +38,7 @@ vim.opt.wildignore = {
 }
 
 -- Make backspace behave like you'd expect
-vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.backspace = { 'indent', 'eol', 'start' }
 
 -- Set shell
 if vim.fn.environ()['SHELL'] ~= nil then
@@ -51,5 +51,6 @@ vim.cmd([[
       autocmd!
       autocmd FileType make setlocal noexpandtab
       autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+      autocmd BufNewFile,BufRead Jenkinsfile setlocal filetype=groovy
     augroup END
 ]])

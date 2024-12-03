@@ -70,5 +70,20 @@ return {
         config = function()
             require('leap').add_default_mappings()
         end
-    }
+    },
+
+    {
+        "https://github.com/apple/pkl-neovim",
+        lazy = true,
+        event = {
+            "BufReadPre *.pkl",
+            "BufNewFile *.pkl"
+        },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+        build = function()
+            vim.cmd("TSInstall! pkl")
+        end,
+    },
 }
