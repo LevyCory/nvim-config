@@ -1,12 +1,37 @@
 return {
-    'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = 'LspAttach',
-    config = function()
-        require('trouble').setup()
-
-        vim.keymap.set("n", "<leader>tr", function() require("trouble").toggle() end)
-        vim.keymap.set("n", "<leader>wd", function() require("trouble").toggle('workspace_diagnostics') end)
-        vim.keymap.set("n", "<leader>dd", function() require("trouble").toggle('document_diagnostics') end)
-    end,
+  "folke/trouble.nvim",
+  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  cmd = "Trouble",
+  keys = {
+    {
+      "<leader>wd",
+      "<cmd>Trouble diagnostics toggle<cr>",
+      desc = "Workspace Diagnostics",
+    },
+    {
+      "<leader>dd",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      desc = "Buffer Diagnostics",
+    },
+    {
+      "<leader>cs",
+      "<cmd>Trouble symbols toggle focus=false<cr>",
+      desc = "Symbols (Trouble)",
+    },
+    {
+      "<leader>tr",
+      "<cmd>Trouble lsp toggle focus=false<cr>",
+      desc = "LSP References",
+    },
+    {
+      "<leader>xL",
+      "<cmd>Trouble loclist toggle<cr>",
+      desc = "Location List (Trouble)",
+    },
+    {
+      "<leader>xQ",
+      "<cmd>Trouble qflist toggle<cr>",
+      desc = "Quickfix List (Trouble)",
+    },
+  },
 }

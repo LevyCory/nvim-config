@@ -39,7 +39,7 @@ local function on_attach(_, buffer_number)
   end
 
   lsp_map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  lsp_map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  lsp_map('<leader>A', vim.lsp.buf.code_action, '[C]ode [A]ction')
   lsp_map('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   lsp_map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   lsp_map('<leader>gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
@@ -55,9 +55,9 @@ local function on_attach(_, buffer_number)
 
   -- Lesser used LSP functionality
   lsp_map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  lsp_map('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  lsp_map('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  lsp_map('<leader>wl', function()
+  lsp_map(
+    '<leader>wl',
+    function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
     '[W]orkspace [L]ist Folders'
