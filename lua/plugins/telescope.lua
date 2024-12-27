@@ -4,7 +4,6 @@ return {
     lazy = false,
     config = function()
         local actions = require('telescope.actions')
-        local trouble = require('trouble.providers.telescope')
 
         require('telescope').setup {
             defaults = {
@@ -61,7 +60,7 @@ return {
         local builtin = require('telescope.builtin')
         telescope_map('<c-p>', builtin.find_files, 'find files in project')
         telescope_map('<leader>ff', builtin.live_grep, 'grep in project')
-        telescope_map('<leader>fb', builtin.buffers, 'find buffers')
+        telescope_map('<leader>b', builtin.buffers, 'find buffers')
         telescope_map('<leader>cmd', builtin.commands, 'search commands')
         telescope_map('<leader>/', builtin.current_buffer_fuzzy_find, 'find in current buffer')
         telescope_map('<leader>sh', builtin.search_history, 'show search history')

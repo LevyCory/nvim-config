@@ -65,12 +65,10 @@ return {
             }),
             sources = cmp.config.sources {
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' }
-            },
-            {
+                { name = 'luasnip' },
                 { name = 'buffer' },
-                { name = 'neorg' },
                 { name = 'path' },
+                -- { name = 'neorg' },
             },
             window = {
                 completion = cmp.config.window.bordered(),

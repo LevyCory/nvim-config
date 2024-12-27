@@ -27,14 +27,14 @@ vim.opt.lazyredraw = true
 
 -- Disable the default keyword completion
 vim.opt.completeopt = {}
---
+
 -- Ignore garbage files
 vim.opt.wildignore = {
-    '*.swp',
-    '*.o',
-    '*.pyc',
-    '*.a',
-    '*.obj'
+  '*.swp',
+  '*.o',
+  '*.pyc',
+  '*.a',
+  '*.obj'
 }
 
 -- Make backspace behave like you'd expect
@@ -42,15 +42,15 @@ vim.opt.backspace = { 'indent', 'eol', 'start' }
 
 -- Set shell
 if vim.fn.environ()['SHELL'] ~= nil then
-    vim.opt.shell = vim.fn.environ()['SHELL']
+  vim.opt.shell = vim.fn.environ()['SHELL']
 end
 
--- make/cmake
-vim.cmd([[
-    augroup init-lua-make-cmake
-      autocmd!
-      autocmd FileType make setlocal noexpandtab
-      autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-      autocmd BufNewFile,BufRead Jenkinsfile setlocal filetype=groovy
-    augroup END
-]])
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = "make",
+    callback = function(_)
+      vim.set_local.noexpandtab = true
+    end
+  }
+)
