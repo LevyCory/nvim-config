@@ -60,6 +60,7 @@ return {
     local builtin = require('telescope.builtin')
     telescope_map('<c-p>', builtin.find_files, 'find files in project')
     telescope_map('<leader>ff', builtin.live_grep, 'grep in project')
+    telescope_map('<leader>fh', builtin.help_tags, 'grep in project')
     telescope_map('<leader>b', builtin.buffers, 'find buffers')
     telescope_map('<leader>cmd', builtin.commands, 'search commands')
     telescope_map('<leader>/', builtin.current_buffer_fuzzy_find, 'find in current buffer')

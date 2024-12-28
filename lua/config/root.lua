@@ -5,28 +5,28 @@ local root_names = { '.git', 'Makefile', '.sln' }
 local root_cache = {}
 
 local set_root = function()
-    -- Get directory path to start search from
-    local path = vim.api.nvim_buf_get_name(0)
-    if path == '' then
-        return
+  -- Get directory path to start search from
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == '' then
+    return
+  end
+
+  -- Try cache and resort to searching upward for root directory
+  path = vim.fs.dirname(path)
+  local root = root_cache[path]
+
+  if root == nil then
+    local root_file = vim.fs.find(root_names, { path = path, upward = true })[1]
+    if root_file == nil then
+      return
     end
 
-    -- Try cache and resort to searching upward for root directory
-    path = vim.fs.dirname(path)
-    local root = root_cache[path]
+    root = vim.fs.dirname(root_file)
+    root_cache[path] = root
+  end
 
-    if root == nil then
-        local root_file = vim.fs.find(root_names, { path = path, upward = true })[1]
-        if root_file == nil then
-            return
-        end
-
-        root = vim.fs.dirname(root_file)
-        root_cache[path] = root
-    end
-
-    -- Set current directory
-    vim.fn.chdir(root)
+  -- Set current directory
+  vim.fn.chdir(root)
 end
 
 local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})

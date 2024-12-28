@@ -28,7 +28,7 @@ return {
         'yaml',
       },
       highlight = {
-        enable = true,         -- false will disable the whole extension
+        enable = true, -- false will disable the whole extension
         additional_vim_regex_highlighting = false,
       },
       indent = {

@@ -1,8 +1,8 @@
 return {
-    'mhinz/vim-startify',
-    lazy = false,
-    config = function()
-        vim.cmd [[
+  'mhinz/vim-startify',
+  lazy = false,
+  config = function()
+    vim.cmd [[
             let g:startify_padding_left = 4
             let g:startify_custom_header = startify#pad([
                 \ '',
@@ -14,5 +14,5 @@ return {
                 \ '╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝'
             \ ])
         ]]
-    end
+  end
 }

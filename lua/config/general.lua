@@ -45,12 +45,9 @@ if vim.fn.environ()['SHELL'] ~= nil then
   vim.opt.shell = vim.fn.environ()['SHELL']
 end
 
-vim.api.nvim_create_autocmd(
-  "FileType",
-  {
-    pattern = "make",
-    callback = function(_)
-      vim.set_local.noexpandtab = true
-    end
+vim.filetype.add({
+  filename = {
+    ['Jenkinsfile'] = 'groovy',
+    ['jenkinsfile'] = 'groovy'
   }
-)
+})
