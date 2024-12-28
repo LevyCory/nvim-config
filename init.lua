@@ -23,6 +23,7 @@ require 'config.mappings'
 require 'config.abbreviations'
 require 'config.ui'
 require 'config.root'
+require 'config.filetype'
 require 'config.general'
 
 -- Call postload config

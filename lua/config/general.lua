@@ -44,10 +44,3 @@ vim.opt.backspace = { 'indent', 'eol', 'start' }
 if vim.fn.environ()['SHELL'] ~= nil then
   vim.opt.shell = vim.fn.environ()['SHELL']
 end
-
-vim.filetype.add({
-  filename = {
-    ['Jenkinsfile'] = 'groovy',
-    ['jenkinsfile'] = 'groovy'
-  }
-})
