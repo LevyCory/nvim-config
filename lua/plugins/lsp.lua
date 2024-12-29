@@ -94,6 +94,7 @@ return {
           'jedi_language_server',
           'clangd',
           'lua_ls',
+          'cmake',
         },
       }
 
@@ -110,14 +111,7 @@ return {
         ['clangd'] = function()
           lspconfig.clangd.setup {
             capabilities = capabilities,
-            on_attach = function(_, buffer_number)
-              on_attach(_, buffer_number)
-              vim.keymap.set('n', '<c-t>', ':ClangdSwitchSourceHeader<cr>', {
-                buffer = buffer_number,
-                silent = true,
-                desc = 'LSP: Toggle header/source'
-              })
-            end,
+            on_attach = on_attach,
             cmd = {
               'clangd',
               '-j=6',
@@ -137,13 +131,6 @@ return {
               Lua = {
                 runtime = {
                   version = 'LuaJIT'
-                },
-                diagnostics = {
-                  globals = {
-                    'vim',
-                    'next',
-                    'ipairs'
-                  }
                 },
                 workspace = {
                   library = vim.api.nvim_get_runtime_file('', true),
