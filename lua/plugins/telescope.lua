@@ -72,5 +72,7 @@ return {
     telescope_map('<leader>gS', builtin.git_stash, 'search stashes')
     telescope_map('<leader>reg', builtin.registers, 'search registers')
     telescope_map('<leader>k', builtin.keymaps, 'view keymaps')
+    telescope_map('<leader>m', builtin.marks, 'view marks')
+    telescope_map('<leader>j', builtin.jumplist, 'view jumplist')
   end
 }
