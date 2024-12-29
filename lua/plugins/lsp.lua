@@ -88,6 +88,7 @@ return {
     config = function()
       -- Install language servers
       require('mason-lspconfig').setup {
+        automatic_installation = true,
         ensure_installed = {
           'rust_analyzer',
           'jedi_language_server',
@@ -153,24 +154,6 @@ return {
                 }
               }
             }
-          }
-        end,
-        ['pylsp'] = function()
-          lspconfig.pylsp.setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-              pylsp = {
-                plugins = {
-                  flake8 = {
-                    maxLineLength = 120,
-                  },
-                  pycodestyle = {
-                    maxLineLength = 120,
-                  },
-                }
-              },
-            },
           }
         end,
       }

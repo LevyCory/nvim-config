@@ -1,18 +1,29 @@
-local function current_server()
-  local clients = vim.lsp.get_active_clients()
+local function get_attached_lsp_servers()
+  local clients = vim.lsp.get_clients()
   if next(clients) == nil then
-    return 'No Active LSP'
+    return {}
   end
 
-  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  local buf_ft = vim.api.nvim_get_option_value('filetype', { scope = 'local' })
+
+  local servers = {}
   for _, client in ipairs(clients) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return client.name
+      table.insert(servers, client.name)
     end
   end
 
-  return 'No Active LSP'
+  return servers
+end
+
+local function attached_lsp_servers()
+  local servers = get_attached_lsp_servers()
+  if next(servers) == nil then
+    return 'No Active LSP'
+  end
+
+  return table.concat(servers, ', ')
 end
 
 return {
@@ -32,7 +43,7 @@ return {
       lualine_b = { 'filename', 'branch' },
       lualine_c = {},
       lualine_x = {},
-      lualine_y = { { current_server, icon = ' LSP:' }, 'filetype', 'progress' },
+      lualine_y = { { attached_lsp_servers, icon = ' LSP:' }, 'filetype', 'progress' },
       lualine_z = {
         { 'location', separator = { right = '' }, left_padding = 2 },
       },

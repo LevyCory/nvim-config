@@ -68,7 +68,6 @@ return {
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
-        -- { name = 'neorg' },
       },
       window = {
         completion = cmp.config.window.bordered(),
