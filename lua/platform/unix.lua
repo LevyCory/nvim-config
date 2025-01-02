@@ -1,3 +1,3 @@
 return {
-    shell = '/usr/bin/zsh',
+  shell = '/usr/bin/zsh',
 }

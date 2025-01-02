@@ -21,6 +21,3 @@ vim.opt.splitright = true
 
 -- Disable mouse
 vim.opt.mouse = ''
-
--- Remove the command bar
--- vim.opt.cmdheight = 0

@@ -1,7 +1,7 @@
 return {
-    os = require('lib.os'),
-    ui = require('lib.ui'),
+  os = require('lib.os'),
+  ui = require('lib.ui'),
 
-    -- Global state for toggle functionality
-    state = {},
+  -- Global state for toggle functionality
+  state = {},
 }
