@@ -16,7 +16,7 @@ vim.keymap.set('n', '<c-l>', '<c-w>l')
 -- Split resize
 vim.keymap.set('n', '<a-k>', ':resize +1<CR>')
 vim.keymap.set('n', '<a-j>', ':resize -1<CR>')
-vim.keymap.set('n', '<a-h>',  ':vertical resize +1<CR>')
+vim.keymap.set('n', '<a-h>', ':vertical resize +1<CR>')
 vim.keymap.set('n', '<a-l>', ':vertical resize -1<CR>')
 
 -- Insert mode movements
@@ -67,3 +67,62 @@ vim.keymap.set('i', '<Up>', '<nop>')
 vim.keymap.set('i', '<Down>', '<nop>')
 vim.keymap.set('i', '<Left>', '<nop>')
 vim.keymap.set('i', '<Right>', '<nop>')
+
+local function setup_lsp_mappings(args)
+  local buffer = args['buf']
+
+  local lsp_map = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+
+    vim.keymap.set('n', keys, func, { buffer = buffer, desc = desc })
+  end
+
+  lsp_map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  lsp_map('<leader>a', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  lsp_map('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  lsp_map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  lsp_map('<leader>gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  lsp_map('<leader>td', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  lsp_map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  lsp_map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  lsp_map('<leader>oc', require('telescope.builtin').lsp_outgoing_calls, '[O]utgoing [C]alls')
+  lsp_map('<leader>ic', require('telescope.builtin').lsp_incoming_calls, '[I]ncoming [C]alls')
+
+  -- See `:help K` for why this keymap
+  lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
+  lsp_map('<M-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+  -- Lesser used LSP functionality
+  lsp_map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  lsp_map(
+    '<leader>wl',
+    function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    '[W]orkspace [L]ist Folders'
+  )
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(buffer, 'Format', function(_)
+    if vim.lsp.buf.format then
+      vim.lsp.buf.format()
+    elseif vim.lsp.buf.formatting then
+      vim.lsp.buf.formatting()
+    end
+  end, { desc = 'Format current buffer with LSP' })
+
+  -- TODO: Remove when vim.lsp.config gets thier shit together
+  vim.api.nvim_buf_create_user_command(0, 'LspClangdSwitchSourceHeader', function()
+    lib.lsp.clangd_switch_source_header(0)
+  end, { desc = 'Switch between source/header' })
+
+  vim.api.nvim_buf_create_user_command(0, 'LspClangdShowSymbolInfo', function()
+    lib.lsp.clangd_symbol_info()
+  end, { desc = 'Show symbol info' })
+end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = setup_lsp_mappings,
+})

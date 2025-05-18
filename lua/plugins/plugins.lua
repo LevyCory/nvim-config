@@ -8,16 +8,6 @@ return {
     ft = 'rust'
   },
 
-  -- Comment and uncomment code easily
-  {
-    'numToStr/Comment.nvim',
-    event = {
-      'BufReadPost',
-      'BufNewFile',
-    },
-    opts = {}
-  },
-
   -- LSP status spinner
   {
     'j-hui/fidget.nvim',
@@ -50,19 +40,6 @@ return {
     end
   },
 
-  -- Automatically insert closing brackets/braces/quotes
-  {
-    'windwp/nvim-autopairs',
-    version = false,
-    event = {
-      'BufReadPost',
-      'BufNewFile',
-    },
-    config = function()
-      require('nvim-autopairs').setup()
-    end
-  },
-
   -- Leap (EasyMotion for NeoVim)
   {
     'ggandor/leap.nvim',
@@ -72,18 +49,13 @@ return {
     end
   },
 
+  -- Pretty Markdown
   {
-    "https://github.com/apple/pkl-neovim",
-    lazy = true,
-    event = {
-      "BufReadPre *.pkl",
-      "BufNewFile *.pkl"
-    },
+    'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons'
     },
-    build = function()
-      vim.cmd("TSInstall! pkl")
-    end,
-  },
+    opts = {},
+  }
 }
