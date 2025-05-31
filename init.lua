@@ -26,6 +26,7 @@ require 'config.root'
 require 'config.filetype'
 require 'config.general'
 require 'config.diagnostics'
+require 'config.commands'
 
 -- Call postload config
 require 'config.postload'

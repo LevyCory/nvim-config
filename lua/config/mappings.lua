@@ -68,35 +68,35 @@ vim.keymap.set('i', '<Down>', '<nop>')
 vim.keymap.set('i', '<Left>', '<nop>')
 vim.keymap.set('i', '<Right>', '<nop>')
 
+-- Map LSP related shortcuts on LspAttach
 local function setup_lsp_mappings(args)
   local buffer = args['buf']
 
-  local lsp_map = function(keys, func, desc)
+  local lsp_nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
     end
-
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = desc })
   end
 
-  lsp_map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  lsp_map('<leader>a', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  lsp_map('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  lsp_map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  lsp_map('<leader>gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  lsp_map('<leader>td', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  lsp_map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  lsp_map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  lsp_map('<leader>oc', require('telescope.builtin').lsp_outgoing_calls, '[O]utgoing [C]alls')
-  lsp_map('<leader>ic', require('telescope.builtin').lsp_incoming_calls, '[I]ncoming [C]alls')
+  lsp_nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  lsp_nmap('<leader>a', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  lsp_nmap('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  lsp_nmap('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  lsp_nmap('<leader>gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  lsp_nmap('<leader>td', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  lsp_nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  lsp_nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  lsp_nmap('<leader>oc', require('telescope.builtin').lsp_outgoing_calls, '[O]utgoing [C]alls')
+  lsp_nmap('<leader>ic', require('telescope.builtin').lsp_incoming_calls, '[I]ncoming [C]alls')
 
   -- See `:help K` for why this keymap
-  lsp_map('K', vim.lsp.buf.hover, 'Hover Documentation')
-  lsp_map('<M-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  lsp_nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  lsp_nmap('<M-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  lsp_map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  lsp_map(
+  lsp_nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  lsp_nmap(
     '<leader>wl',
     function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
@@ -113,14 +113,6 @@ local function setup_lsp_mappings(args)
     end
   end, { desc = 'Format current buffer with LSP' })
 
-  -- TODO: Remove when vim.lsp.config gets thier shit together
-  vim.api.nvim_buf_create_user_command(0, 'LspClangdSwitchSourceHeader', function()
-    lib.lsp.clangd_switch_source_header(0)
-  end, { desc = 'Switch between source/header' })
-
-  vim.api.nvim_buf_create_user_command(0, 'LspClangdShowSymbolInfo', function()
-    lib.lsp.clangd_symbol_info()
-  end, { desc = 'Show symbol info' })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
