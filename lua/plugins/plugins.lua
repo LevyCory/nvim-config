@@ -40,15 +40,6 @@ return {
     end
   },
 
-  -- Leap (EasyMotion for NeoVim)
-  {
-    'ggandor/leap.nvim',
-    lazy = false,
-    config = function()
-      require('leap').add_default_mappings()
-    end
-  },
-
   -- Pretty Markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
