@@ -24,6 +24,7 @@ return {
         'rust',
         'vim',
         'vimdoc',
+        'xml',
         'yaml',
       },
       highlight = {
