@@ -1,0 +1,8 @@
+.git/
+.cache/
+target/
+%.o
+%.a
+externals/*
+3rd_parties/*
+3rd_party/*

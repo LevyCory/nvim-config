@@ -7,6 +7,14 @@ return {
   config = function()
     local fzf = require('fzf-lua')
 
+    local function ignore_file()
+      return lib.os.path.join(
+        vim.fn.stdpath('config'),
+        'resources',
+        'vim-ignore'
+      )
+    end
+
     fzf.setup {
       -- Start fzf without the preview window
       winopts = {
@@ -16,7 +24,15 @@ return {
       },
 
       files = {
-        git_icons = true
+        git_icons = true,
+        fd_opts = table.concat({
+          '--color=never',
+          '--type f',
+          '--hidden',
+          '--follow',
+          '--ignore-file',
+          ignore_file()
+        }, ' ')
       },
     }
 
