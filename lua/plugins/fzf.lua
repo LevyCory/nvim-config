@@ -4,6 +4,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "lewis6991/gitsigns.nvim",
   },
+  event = 'BufRead',
   config = function()
     local fzf = require('fzf-lua')
 
@@ -33,6 +34,15 @@ return {
           '--ignore-file',
           ignore_file()
         }, ' ')
+      },
+
+      buffers = {
+        actions = {
+          ['ctrl-d'] = {
+            fn = fzf.actions.buf_del,
+            reload = true
+          }
+        }
       },
     }
 
