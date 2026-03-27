@@ -16,7 +16,6 @@ require 'config.preload'
 
 -- Set up plugins
 require 'config.lazy'
-require 'config.neovide'
 
 -- Set up settings
 require 'config.mappings'
