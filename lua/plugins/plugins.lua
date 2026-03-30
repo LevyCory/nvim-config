@@ -2,6 +2,14 @@ return {
   -- Needed for configuring nvim-qt
   'equalsraf/neovim-gui-shim',
 
+  -- Colors
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+  },
+
   -- Rust plugin
   {
     'rust-lang/rust.vim',
@@ -48,5 +56,16 @@ return {
       'nvim-tree/nvim-web-devicons'
     },
     opts = {},
+  },
+
+  -- Smear cursor
+  {
+    "sphamba/smear-cursor.nvim",
+    event = 'BufReadPost',
+    opts = {
+      stiffness = 0.8,
+      trailing_stiffness = 0.5,
+      distance_stop_animating = 0.5,
+    },
   }
 }
