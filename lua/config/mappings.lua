@@ -68,6 +68,9 @@ vim.keymap.set('i', '<Down>', '<nop>')
 vim.keymap.set('i', '<Left>', '<nop>')
 vim.keymap.set('i', '<Right>', '<nop>')
 
+-- Oil keymap
+vim.keymap.set('n', '<leader>n', ':Oil<cr>')
+
 -- Map LSP related shortcuts on LspAttach
 local function setup_lsp_mappings(args)
   local buffer = args['buf']
