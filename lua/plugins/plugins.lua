@@ -48,16 +48,6 @@ return {
     end
   },
 
-  -- Pretty Markdown
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons'
-    },
-    opts = {},
-  },
-
   -- Smear cursor
   {
     "sphamba/smear-cursor.nvim",

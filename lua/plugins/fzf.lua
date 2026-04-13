@@ -50,7 +50,7 @@ return {
       if func == nil then
         print(shortcut)
       end
-      vim.keymap.set('n', shortcut, func, { desc = 'FzfLua: ' .. desc })
+      vim.keymap.set('n', shortcut, func, { desc = 'fzf: ' .. desc })
     end
 
     fzf_map('<c-p>', fzf.files, 'find files in project')
