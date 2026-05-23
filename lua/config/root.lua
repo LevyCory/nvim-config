@@ -1,5 +1,4 @@
--- Array of file names indicating root directory. Modify to your liking.
-local root_names = { '.git', 'Makefile', '.sln' }
+local git_root = '.git'
 
 -- Cache to use for speed up (at cost of possibly outdated results)
 local root_cache = {}
@@ -16,7 +15,7 @@ local set_root = function()
   local root = root_cache[path]
 
   if root == nil then
-    local root_file = vim.fs.find(root_names, { path = path, upward = true })[1]
+    local root_file = vim.fs.find(git_root, { path = path, upward = true })[1]
     if root_file == nil then
       return
     end
@@ -29,5 +28,5 @@ local set_root = function()
   vim.fn.chdir(root)
 end
 
-local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})
+local root_augroup = vim.api.nvim_create_augroup('AutoRoot', {})
 vim.api.nvim_create_autocmd('BufEnter', { group = root_augroup, callback = set_root })

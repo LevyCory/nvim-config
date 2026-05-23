@@ -40,13 +40,13 @@ return {
   },
 
   -- Hex color highlighter
-  {
-    'norcalli/nvim-colorizer.lua',
-    event = 'BufReadPost',
-    config = function()
-      require('colorizer').setup()
-    end
-  },
+  -- {
+  --   'norcalli/nvim-colorizer.lua',
+  --   event = 'BufReadPost',
+  --   config = function()
+  --     require('colorizer').setup()
+  --   end
+  -- },
 
   -- Smear cursor
   {
@@ -57,5 +57,5 @@ return {
       trailing_stiffness = 0.5,
       distance_stop_animating = 0.5,
     },
-  }
+  },
 }
